@@ -2,7 +2,9 @@ import 'package:facebook_clone/feature/home/widgets/circle_button.dart';
 import 'package:facebook_clone/feature/home/widgets/create_post_container.dart';
 import 'package:facebook_clone/feature/home/widgets/post_card.dart';
 import 'package:facebook_clone/feature/home/widgets/stories_section.dart';
+import 'package:facebook_clone/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class FacebookHomePage extends StatefulWidget {
   const FacebookHomePage({super.key});
@@ -14,6 +16,7 @@ class FacebookHomePage extends StatefulWidget {
 class _FacebookHomePageState extends State<FacebookHomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  final AuthService _authService = AuthService();
 
   @override
   void initState() {
@@ -91,7 +94,28 @@ class _FacebookHomePageState extends State<FacebookHomePage>
             const Center(child: Text("Friends")),
             const Center(child: Text("Marketplace")),
             const Center(child: Text("Notifications")),
-            const Center(child: Text("Menu")),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+                onPressed: () async {
+                  await _authService.signOut();
+                  context.go('/login');
+                },
+                child: const Text(
+                  'Log Out',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -57,7 +57,11 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: const Text(
                     'Continue with Google',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
