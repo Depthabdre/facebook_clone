@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "241568356316",
+    "project_id": "facebook-clone-abdre-firebase",
+    "storage_bucket": "facebook-clone-abdre-firebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241568356316:android:1eb78d095a4098915be119",
+        "android_client_info": {
+          "package_name": "com.example.facebook_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241568356316-q4012niaggs3eqjq1ut78qutfq5iokme.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBThwZVc9f-Rflqv59lMx-2omiSA8A34BM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241568356316-q4012niaggs3eqjq1ut78qutfq5iokme.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
