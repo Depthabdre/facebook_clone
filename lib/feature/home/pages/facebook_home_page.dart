@@ -1,10 +1,9 @@
+import 'package:facebook_clone/feature/home/pages/facebook_menu_page.dart';
 import 'package:facebook_clone/feature/home/widgets/circle_button.dart';
 import 'package:facebook_clone/feature/home/widgets/create_post_container.dart';
 import 'package:facebook_clone/feature/home/widgets/post_card.dart';
 import 'package:facebook_clone/feature/home/widgets/stories_section.dart';
-import 'package:facebook_clone/services/auth_service.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class FacebookHomePage extends StatefulWidget {
   const FacebookHomePage({super.key});
@@ -16,7 +15,6 @@ class FacebookHomePage extends StatefulWidget {
 class _FacebookHomePageState extends State<FacebookHomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final AuthService _authService = AuthService();
 
   @override
   void initState() {
@@ -34,9 +32,7 @@ class _FacebookHomePageState extends State<FacebookHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(
-        0xFFC9CCD1,
-      ), // Grey background for separators
+      backgroundColor: const Color(0xFFC9CCD1),
       body: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -65,7 +61,7 @@ class _FacebookHomePageState extends State<FacebookHomePage>
                   icon: Icons.message,
                   iconSize: 24.0,
                   onPressed: () {},
-                ), // Using message icon roughly matches messenger
+                ),
               ],
               bottom: TabBar(
                 controller: _tabController,
@@ -86,36 +82,15 @@ class _FacebookHomePageState extends State<FacebookHomePage>
         },
         body: TabBarView(
           controller: _tabController,
-          children: [
-            // 1. HOME FEED
-            const _HomeFeedTab(),
-            // 2. Others (Placeholders)
-            const Center(child: Text("Video")),
-            const Center(child: Text("Friends")),
-            const Center(child: Text("Marketplace")),
-            const Center(child: Text("Notifications")),
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                onPressed: () async {
-                  await _authService.signOut();
-                  context.go('/login');
-                },
-                child: const Text(
-                  'Log Out',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
+          children: const [
+            _HomeFeedTab(),
+
+            Center(child: Text("Video")),
+            Center(child: Text("Friends")),
+            Center(child: Text("Marketplace")),
+            Center(child: Text("Notifications")),
+            // 6. MENU PAGE (New)
+            FacebookMenuPage(), // Use the new menu page here
           ],
         ),
       ),
