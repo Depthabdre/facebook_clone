@@ -1,5 +1,6 @@
 import 'package:facebook_clone/feature/home/pages/facebook_menu_page.dart';
 import 'package:facebook_clone/feature/home/pages/facebook_friends_page.dart'; // Import the new friends page
+import 'package:facebook_clone/feature/home/pages/facebook_notifications_page.dart';
 import 'package:facebook_clone/feature/home/widgets/circle_button.dart';
 import 'package:facebook_clone/feature/home/widgets/create_post_container.dart';
 import 'package:facebook_clone/feature/home/widgets/post_card.dart';
@@ -20,7 +21,7 @@ class _FacebookHomePageState extends State<FacebookHomePage>
   @override
   void initState() {
     super.initState();
-  
+
     _tabController = TabController(length: 6, vsync: this);
   }
 
@@ -94,7 +95,7 @@ class _FacebookHomePageState extends State<FacebookHomePage>
             FacebookFriendsPage(), // Use the new friends page here
             // 4. Remaining tabs
             Center(child: Text("Marketplace")),
-            Center(child: Text("Notifications")),
+            FacebookNotificationsPage(),
             // 6. MENU PAGE
             FacebookMenuPage(),
           ],
