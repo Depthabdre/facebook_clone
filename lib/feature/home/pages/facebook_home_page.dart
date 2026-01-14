@@ -1,4 +1,5 @@
 import 'package:facebook_clone/feature/home/pages/facebook_menu_page.dart';
+import 'package:facebook_clone/feature/home/pages/facebook_friends_page.dart'; // Import the new friends page
 import 'package:facebook_clone/feature/home/widgets/circle_button.dart';
 import 'package:facebook_clone/feature/home/widgets/create_post_container.dart';
 import 'package:facebook_clone/feature/home/widgets/post_card.dart';
@@ -19,7 +20,7 @@ class _FacebookHomePageState extends State<FacebookHomePage>
   @override
   void initState() {
     super.initState();
-    // 6 Tabs: Home, Video, Friends, Market, Notifications, Menu
+  
     _tabController = TabController(length: 6, vsync: this);
   }
 
@@ -32,7 +33,9 @@ class _FacebookHomePageState extends State<FacebookHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFC9CCD1),
+      backgroundColor: const Color(
+        0xFFC9CCD1,
+      ), // Grey background for separators
       body: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -61,7 +64,7 @@ class _FacebookHomePageState extends State<FacebookHomePage>
                   icon: Icons.message,
                   iconSize: 24.0,
                   onPressed: () {},
-                ),
+                ), // Using message icon roughly matches messenger
               ],
               bottom: TabBar(
                 controller: _tabController,
@@ -83,14 +86,17 @@ class _FacebookHomePageState extends State<FacebookHomePage>
         body: TabBarView(
           controller: _tabController,
           children: const [
+            // 1. HOME FEED
             _HomeFeedTab(),
-
+            // 2. Others
             Center(child: Text("Video")),
-            Center(child: Text("Friends")),
+            // 3. FRIENDS PAGE (New)
+            FacebookFriendsPage(), // Use the new friends page here
+            // 4. Remaining tabs
             Center(child: Text("Marketplace")),
             Center(child: Text("Notifications")),
-            // 6. MENU PAGE (New)
-            FacebookMenuPage(), // Use the new menu page here
+            // 6. MENU PAGE
+            FacebookMenuPage(),
           ],
         ),
       ),
